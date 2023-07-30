@@ -73,7 +73,7 @@ const Home: NextPage = () => {
 
     const checkIfUserHasVoted = async () => {
       try {
-        const hasVoted = await vote!.hasVoted(proposals[0].proposalchainId.toString(), address);
+        const hasVoted = await vote!.hasVoted(proposals[0].proposalId.toString(), address);
         setHasVoted(hasVoted);
         if (hasVoted) {
           console.log("🥵 User has already voted");
