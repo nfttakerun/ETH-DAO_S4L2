@@ -199,9 +199,9 @@ const Home: NextPage = () => {
     );
   }
   // テストネットが Sepolia ではなかった場合に警告を表示
-  else if (address && network && network?.data?.chain?.chainId !== 11155111) {
+  else if (address && network && network?.data?.chain?.id !== 11155111) {
     console.log("wallet address: ", address);
-    console.log("network: ", network?.data?.chain?.chainId);
+    console.log("network: ", network?.data?.chain?.id);
 
     return (
       <div className={styles.container}>
@@ -256,12 +256,12 @@ const Home: NextPage = () => {
                   // フォームから値を取得します
                   const votes = proposals.map((proposal) => {
                     const voteResult = {
-                      proposalchainId: proposal.proposalchainId,
+                      proposalchainId: proposal.proposalId,
                       vote: 2,
                     };
                     proposal.votes.forEach((vote) => {
-                      const elem = document.getElementBychainId(
-                        proposal.proposalchainId + "-" + vote.type
+                      const elem = document.getElementById(
+                        proposal.proposalId + "-" + vote.type
                       ) as HTMLInputElement;
 
                       if (elem!.checked) {
@@ -322,20 +322,20 @@ const Home: NextPage = () => {
                 }}
               >
                 {proposals.map((proposal) => (
-                  <div key={proposal.proposalchainId.toString()} className="card">
+                  <div key={proposal.proposalId.toString()} className="card">
                     <h5>{proposal.description}</h5>
                     <div>
                       {proposal.votes.map(({ type, label }) => (
                         <div key={type}>
                           <input
                             type="radio"
-                            chainId={proposal.proposalchainId + "-" + type}
-                            name={proposal.proposalchainId.toString()}
+                            id={proposal.proposalId + "-" + type}
+                            name={proposal.proposalId.toString()}
                             value={type}
                             // デフォルトで棄権票をチェックする
                             defaultChecked={type === 2}
                           />
-                          <label htmlFor={proposal.proposalchainId + "-" + type}>
+                          <label htmlFor={proposal.proposalId + "-" + type}>
                             {label}
                           </label>
                         </div>
