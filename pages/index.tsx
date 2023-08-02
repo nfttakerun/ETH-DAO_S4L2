@@ -189,7 +189,7 @@ const Home: NextPage = () => {
       <div className={styles.container}>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Welcome to Tokyo Sauna Collective !!
+            Welcome to takerun DAO🐍 !!
           </h1>
           <div className={styles.connect}>
             <ConnectWallet />
